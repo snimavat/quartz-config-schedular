@@ -1,4 +1,4 @@
-package grails.plugin.quartzconfigschedular
+package grails.plugin.quartzconfigscheduler
 
 import grails.boot.*
 import grails.boot.config.GrailsAutoConfiguration

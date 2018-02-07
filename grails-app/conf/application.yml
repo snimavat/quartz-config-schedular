@@ -2,7 +2,7 @@
 grails:
     profile: web-plugin
     codegen:
-        defaultPackage: grails.plugin.quartzconfigschedular
+        defaultPackage: grails.plugin.quartzconfigscheduler
     spring:
         transactionManagement:
             proxies: false

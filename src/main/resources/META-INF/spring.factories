@@ -1,1 +1,1 @@
-org.springframework.boot.SpringApplicationRunListener=grails.plugin.quartzconfigschedular.QuartzRunListener
+org.springframework.boot.SpringApplicationRunListener=grails.plugin.quartzconfigscheduler.QuartzRunListener

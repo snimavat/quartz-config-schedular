@@ -58,12 +58,12 @@ grailsPublish {
     desc = 'Allow creating quartz job from configuration'
     developers = [snimavat: 'Sudhir Nimavat']
     githubSlug = '9ci/quartz-config-schedular'
-    issueTrackerUrl = 'https://github.com/9ci/quartz-config-schedular/issues'
+    issueTrackerUrl = 'https://github.com/9ci/quartz-config-scheduler/issues'
     vcsUrl = 'https://github.com/9ci/quartz-config-schedular'
     license {
         name = 'Apache-2.0'
     }
-    title = 'Quartz Config Schedular Plugin'
+    title = 'Quartz Config Scheduler Plugin'
     //userOrg = '9ci' //the Org to publish this under in
     repo = 'grails-plugins' //the repository you setup in bintray
     userOrg = '9ci'

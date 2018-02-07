@@ -1,4 +1,4 @@
-package grails.plugin.quartzconfigschedular
+package grails.plugin.quartzconfigscheduler
 
 class BootStrap {
 

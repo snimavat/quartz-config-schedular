@@ -1,4 +1,4 @@
-package grails.plugin.quartzconfigschedular
+package grails.plugin.quartzconfigscheduler
 
 import grails.core.GrailsApplication
 import groovy.util.logging.Slf4j
