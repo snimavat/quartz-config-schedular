@@ -1,1 +1,4 @@
-rootProject.name='quartz-config-scheduler'
+rootProject.name = 'quartz-config-scheduler-root'
+
+include 'plugin'
+findProject(':plugin').name = 'quartz-config-scheduler'
