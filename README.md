@@ -12,16 +12,24 @@ Enable ```grails.plugin.quartz.autoStartup = true```
 And then schedule a closure job as shown below.
 
 File ```application.groovy``` or an external configuration file.
+
 ```groovy
 import org.quartz.Trigger
 import org.quartz.Scheduler
 import org.springframework.context.ApplicationContext
 import grails.plugin.quartzconfigscheduler.ClosureJob
 import org.quartz.JobExecutionContext
+import org.quartz.TriggerBuilder
 
 grails.plugin.quartz.jobSetup.testJob = { Scheduler scheduler, ApplicationContext context ->
-    Trigger trigger = newTrigger() //build trigger using Quartz trigger builder
     
+    Trigger trigger = TriggerBuilder.newTrigger().withIdentity("closureJobTrigger")
+        .withSchedule(
+            simpleSchedule()
+            .withIntervalInMilliseconds(10)
+            .withRepeatCount(2)
+        ).startNow().build()
+        
     Map jobParams = [param1:value1]
     ClosureJob.schedule(trigger, jobParams) { JobExecutionContext jobCtx ->
         println "Job executed"
