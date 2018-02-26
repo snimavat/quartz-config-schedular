@@ -32,7 +32,7 @@ project(':quartz-config-scheduler') {
 
 ext {
 	commonBuild = new File(project.rootDir, "gradle").absolutePath
-	grailsApps = []
+	grailsApps = ["test-app"]
 	grailsPlugins = ['quartz-config-scheduler']
 }
 

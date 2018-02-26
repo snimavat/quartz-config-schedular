@@ -2,3 +2,6 @@ rootProject.name = 'quartz-config-scheduler-root'
 
 include 'plugin'
 findProject(':plugin').name = 'quartz-config-scheduler'
+
+include 'examples/app'
+findProject(':examples/app').name = 'test-app'
