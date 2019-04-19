@@ -1,4 +1,5 @@
-[![Build Status](https://travis-ci.org/yakworks/quartz-config-scheduler.svg?branch=master)](https://travis-ci.org/yakworks/quartz-config-scheduler)
+![CircleCI](https://img.shields.io/circleci/project/github/yakworks/quartz-config-scheduler.svg?longCache=true&style=for-the-badge)
+
 
 Quartz config scheduler
 ---
