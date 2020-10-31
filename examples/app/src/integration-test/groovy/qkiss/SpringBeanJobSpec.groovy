@@ -2,7 +2,7 @@ package qkiss
 
 import grails.plugin.quartzconfigscheduler.SpringBeanJob
 import grails.testing.mixin.integration.Integration
-import grails.transaction.Rollback
+import grails.gorm.transactions.Rollback
 import org.quartz.Trigger
 
 import static org.quartz.SimpleScheduleBuilder.simpleSchedule

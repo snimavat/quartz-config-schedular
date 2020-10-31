@@ -24,25 +24,10 @@ import grails.core.GrailsApplication
 @SuppressWarnings(['EmptyMethod', 'NoDef'])
 class QuartzRunListener implements SpringApplicationRunListener {
 
-    public QuartzRunListener(SpringApplication application, String[] args) {}
-
-    /* Spring Boot 1.5 or higher */
-    void starting() {}
-
-    /* Spring Boot 1.4 */
-    void started() {}
+    QuartzRunListener(SpringApplication application, String[] args) {}
 
     @Override
-    void environmentPrepared(ConfigurableEnvironment environment) {}
-
-    @Override
-    void contextPrepared(ConfigurableApplicationContext context) {}
-
-    @Override
-    void contextLoaded(ConfigurableApplicationContext context) {}
-
-    @Override
-    void finished(ConfigurableApplicationContext context, Throwable exception) {
+    void started(ConfigurableApplicationContext context) {
         if (!context) return
         GrailsApplication grailsApplication = context.getBean("grailsApplication")
         Scheduler scheduler = context.getBean('quartzScheduler')
@@ -57,4 +42,12 @@ class QuartzRunListener implements SpringApplicationRunListener {
             }
         }
     }
+
+    void starting() {}
+    void environmentPrepared(ConfigurableEnvironment environment) {}
+    void contextPrepared(ConfigurableApplicationContext context) {}
+    void contextLoaded(ConfigurableApplicationContext context) {}
+    void running(ConfigurableApplicationContext context) {}
+    void failed(ConfigurableApplicationContext context, Throwable exception) {}
+
 }

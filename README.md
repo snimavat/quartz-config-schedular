@@ -9,6 +9,14 @@
 Install
 --- 
 
+**grails 4**
+
+```groovy
+compile "org.grails.plugins:quartz-config-scheduler:4.0.0"
+```
+
+**grails 3+**
+
 ```groovy
 compile "org.grails.plugins:quartz-config-scheduler:2.0.0"
 ```

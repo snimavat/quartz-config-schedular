@@ -12,25 +12,26 @@ dependencies {
     compile "org.springframework.boot:spring-boot-starter-tomcat"
 
     compile "org.grails.plugins:hibernate5"
-    compile "org.hibernate:hibernate-core:$versionHibernate"
-    compile "org.hibernate:hibernate-ehcache:$versionHibernate"
+    compile "org.hibernate:hibernate-core:$vHibernate"
+    compile "org.hibernate:hibernate-ehcache:$vHibernate"
 
-    provided "org.codehaus.groovy:groovy-ant"
+    compileOnly("org.quartz-scheduler:quartz:$vQuartz") {
+      exclude group: 'slf4j-api', module: 'c3p0'
+    }
+    compileOnly "org.grails.plugins:quartz:$vGrailsQuartz"
 
+    compile "org.codehaus.groovy:groovy-ant"
+
+    compile project(":quartz-config-scheduler")
     testRuntime "org.apache.tomcat:tomcat-jdbc"
-    testCompile "org.grails:grails-plugin-testing"
     testCompile "org.grails:grails-gorm-testing-support"
     testCompile "org.grails:grails-web-testing-support"
 }
 
 bootRun {
-    jvmArgs('-Dspring.output.ansi.enabled=always')
-    addResources = true
-}
-
-grails {
-    exploded = true
-    plugins {
-        compile project(':quartz-config-scheduler')
-    }
+  ignoreExitValue true
+  jvmArgs('-Dspring.output.ansi.enabled=always', '-noverify', '-XX:TieredStopAtLevel=1', '-Xmx1024m')
+  sourceResources sourceSets.main
+  String springProfilesActive = 'spring.profiles.active'
+  systemProperty springProfilesActive, System.getProperty(springProfilesActive)
 }

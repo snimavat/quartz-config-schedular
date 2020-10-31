@@ -6,36 +6,47 @@ buildscript {
     }
     dependencies {
         classpath "org.grails:grails-gradle-plugin:$grailsVersion"
-        classpath "org.yakworks:gradle-plugins:1.1.3"
+        classpath "org.yakworks:gradle-plugins:2.0.1"
     }
 }
 
 apply plugin: 'yakworks.shipyak'
 
 subprojects {
-    plugins.withId('java') {
-      sourceCompatibility = '1.8'
-      targetCompatibility = '1.8'
 
-        dependencies {
-            compile "org.springframework.boot:spring-boot-starter-logging"
-            compile "org.springframework.boot:spring-boot-autoconfigure"
-            compile "org.grails:grails-core"
-            compile "org.grails:grails-dependencies"
-            compile "org.grails:grails-web-boot"
-            compile "org.grails.plugins:cache"
-
-            testRuntime "com.h2database:h2"
-
-            testCompile "org.grails:grails-plugin-testing"
-            testCompile "org.grails:grails-gorm-testing-support"
-            testCompile "org.grails:grails-web-testing-support"
-            testCompile "cglib:cglib-nodep:3.2.0"
-        }
-
-        test {
-            testLogging.exceptionFormat = 'full'
-        }
+  configurations {
+    testCompile.extendsFrom compileOnly //includes the compileOnly in tests too so we don't have to list twice
+    all {
+      resolutionStrategy.cacheChangingModulesFor 1, 'seconds' //when changing = true this sets the cache time
     }
+    developmentOnly
+    runtimeClasspath {
+      extendsFrom developmentOnly
+    }
+  }
+
+  plugins.withId('java') {
+    sourceCompatibility = '1.8'
+    targetCompatibility = '1.8'
+
+    dependencies {
+        compile "org.springframework.boot:spring-boot-starter-logging"
+        compile "org.springframework.boot:spring-boot-autoconfigure"
+        compile "org.grails:grails-core"
+        compile "org.grails:grails-dependencies"
+        compile "org.grails:grails-web-boot"
+        compile "org.grails.plugins:cache"
+
+        testRuntime "com.h2database:h2"
+
+        testCompile "org.grails:grails-gorm-testing-support"
+        testCompile "org.grails:grails-web-testing-support"
+        testCompile "cglib:cglib-nodep:3.2.0"
+    }
+
+    test {
+        testLogging.exceptionFormat = 'full'
+    }
+  }
 
 }
